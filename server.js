@@ -29,8 +29,9 @@ app.set("view engine", "handlebars");
 //connecting to MongoDB
 //mongoose.connect("mongodb://localhost/scraped_news");
 const MONGODB_URI =
- // process.env.MONGODB_URI || "mongodb://chinedu:Nissi2013@ds013456.mlab.com:13456/heroku_ltqn5fxl";
-  process.env.MONGODB_URI || "mongodb://chine-news:Nissi2013@ds013456.mlab.com:13456/heroku_ltqn5fxl";
+
+ // process.env.MONGODB_URI || "mongodb://chine-news:Nissi2013@ds013456.mlab.com:13456/heroku_ltqn5fxl";
+ process.env.MONGODB_URI || "mongodb://localhost/scraper_news";
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 var db = mongoose.connection;

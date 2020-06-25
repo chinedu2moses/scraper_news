@@ -61,8 +61,9 @@ router.get("/articles", function(req, res) {
       if (err) {
         console.log(err);
       } else {
-        var artcl = { article: doc };
-        res.render("index", artcl);
+        
+        console.log(doc)
+        res.render("index",{article:doc});
       }
     });
 });
