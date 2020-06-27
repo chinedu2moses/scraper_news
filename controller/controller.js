@@ -39,7 +39,7 @@ router.get("/scrape", function(req, res) {
                 if (err) {
                   console.log(err);
                 } else {
-                  console.log("doc", doc);
+                  console.log(doc);
                 }
               });
             }
@@ -55,15 +55,14 @@ router.get("/scrape", function(req, res) {
   });
 });
 router.get("/articles", function(req, res) {
-  Article.find()
+  Article.find().lean()
     .sort({ _id: -1 })
     .exec(function(err, doc) {
       if (err) {
         console.log(err);
       } else {
-        
-        console.log(doc)
-        res.render("index",{article:doc});
+        var artcl = { article: doc };
+        res.render("index", artcl);
       }
     });
 });
@@ -97,7 +96,7 @@ router.get("/readArticle/:id", function(req, res) {
   };
 
   Article.findOne({ _id: articleId })
-    .populate("comment")
+  .populate("comment").lean()
     .exec(function(err, doc) {
       if (err) {
         console.log("Error: " + err);
